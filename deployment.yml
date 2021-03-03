@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soap-service-deployment
+  labels:
+    app: soap-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: soap-service
+  template:
+    metadata:
+      labels:
+        app: soap-service
+    spec:
+      containers:
+      - name: soap-service
+        image: montasserbenhassen/soap-service:latest
+        ports:
+        - containerPort: 8081
